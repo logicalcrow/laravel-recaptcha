@@ -1,5 +1,5 @@
 {
-    "name": "laravel/laravel-recaptcha",
+    "name": "logicalcrow/laravel-recaptcha",
     "description": "Simple and painless Google reCAPTCHA package for Laravel framework",
     "license": "MIT",
     "type": "library",
@@ -9,11 +9,11 @@
         "laravel",
         "validation"
     ],
-    "homepage": "https://www.logicalcrow.com/laravel-recaptcha",
+    "homepage": "https://github.com/logicalcrow/laravel-recaptcha.git",
     "authors": [
         {
-            "name": "Giovanni Cespedes",
-            "email": "giovanni@logicalcrow.com",
+            "name": "Giovanni Cespedes Alcocer",
+            "email": "info@logicalcrow.com",
             "homepage": "https://www.logicalcrow.com",
             "role": "Developer"
         }
