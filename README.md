@@ -1,11 +1,11 @@
 **Laravel ReCAPTCHA** is a very simply-to-use Laravel 5 package to embed Google reCAPTCHA in your application.
 
-[![Build Status](https://travis-ci.org/biscolab/laravel-recaptcha.svg?branch=master#img-thumbnail)](https://travis-ci.org/biscolab/laravel-recaptcha)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/biscolab/laravel-recaptcha/badges/quality-score.png?b=master#img-thumbnail)](https://scrutinizer-ci.com/g/biscolab/laravel-recaptcha/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/biscolab/laravel-recaptcha/badges/coverage.png?b=master#img-thumbnail)](https://scrutinizer-ci.com/g/biscolab/laravel-recaptcha/?branch=master)
-[![Packagist version](https://img.shields.io/packagist/v/biscolab/laravel-recaptcha.svg#img-thumbnail)](https://packagist.org/packages/biscolab/laravel-recaptcha)
-[![Downloads](https://img.shields.io/packagist/dt/biscolab/laravel-recaptcha.svg#img-thumbnail)](https://packagist.org/packages/biscolab/laravel-recaptcha/stats)
-[![MIT License](https://img.shields.io/github/license/biscolab/laravel-recaptcha.svg#img-thumbnail)](https://github.com/biscolab/laravel-recaptcha/blob/master/LICENSE)
+[![Build Status](https://travis-ci.org/logicalcrow/laravel-recaptcha.svg?branch=master#img-thumbnail)](https://travis-ci.org/logicalcrow/laravel-recaptcha)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/logicalcrow/laravel-recaptcha/badges/quality-score.png?b=master#img-thumbnail)](https://scrutinizer-ci.com/g/logicalcrow/laravel-recaptcha/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/logicalcrow/laravel-recaptcha/badges/coverage.png?b=master#img-thumbnail)](https://scrutinizer-ci.com/g/logicalcrow/laravel-recaptcha/?branch=master)
+[![Packagist version](https://img.shields.io/packagist/v/logicalcrow/laravel-recaptcha.svg#img-thumbnail)](https://packagist.org/packages/logicalcrow/laravel-recaptcha)
+[![Downloads](https://img.shields.io/packagist/dt/logicalcrow/laravel-recaptcha.svg#img-thumbnail)](https://packagist.org/packages/logicalcrow/laravel-recaptcha/stats)
+[![MIT License](https://img.shields.io/github/license/logicalcrow/laravel-recaptcha.svg#img-thumbnail)](https://github.com/logicalcrow/laravel-recaptcha/blob/master/LICENSE)
 
 ## What is reCAPTCHA?
 
@@ -30,8 +30,8 @@ Follow the instructions and at the end of the process you will find **Site key**
 ## System requirements
 
 | Package version | reCaptcha version             | PHP version           | Laravel version         | 
-| --------------- | ----------------------------- | --------------------- | ----------------------- | 
-| 6.1             | v3, v2 Invisible, v2 Checkbox | 7.3 or greater        | 7, 8, 9, 10, 11         | 
+| --------------- | ----------------------------- | --------------------- |-------------------------| 
+| 6.1             | v3, v2 Invisible, v2 Checkbox | 7.3 or greater        | 7, 8, 9, 10, 11, 12      | 
 | 6.0             | v3, v2 Invisible, v2 Checkbox | 7.3 or greater        | 7, 8, 9, 10             | 
 | 5.x             | v3, v2 Invisible, v2 Checkbox | 7.3 or greater        | 7, 8, 9                 | 
 | 4.2.x to 4.4.x  | v3, v2 Invisible, v2 Checkbox | 7.1 or greater        | 5.5 or greater, 6, 7, 8 | 
@@ -47,7 +47,7 @@ Follow the instructions and at the end of the process you will find **Site key**
 You can install the package via composer:
 
 ```sh
-$ composer require biscolab/laravel-recaptcha
+$ composer require logicalcrow/laravel-recaptcha
 ```
 
 Laravel 5.5 (or greater) uses package auto-discovery, so doesn't require you to manually add the Service Provider, but if you don't use auto-discovery `ReCaptchaServiceProvider` must be registered in `config/app.php`:
@@ -55,7 +55,7 @@ Laravel 5.5 (or greater) uses package auto-discovery, so doesn't require you to 
 ```php
 'providers' => [
     ...
-    Biscolab\ReCaptcha\ReCaptchaServiceProvider::class,
+    Logicalcrow\ReCaptcha\ReCaptchaServiceProvider::class,
 ];
 ```
 
@@ -64,7 +64,7 @@ You can use the facade for shorter code. Add `ReCaptcha` to your aliases:
 ```php
 'aliases' => [
     ...
-    'ReCaptcha' => Biscolab\ReCaptcha\Facades\ReCaptcha::class,
+    'ReCaptcha' => Logicalcrow\ReCaptcha\Facades\ReCaptcha::class,
 ];
 ```
 
@@ -74,7 +74,7 @@ You can use the facade for shorter code. Add `ReCaptcha` to your aliases:
 Create `config/recaptcha.php` configuration file using the following artisan command:
 
 ```sh
-$ php artisan vendor:publish --provider="Biscolab\ReCaptcha\ReCaptchaServiceProvider"
+$ php artisan vendor:publish --provider="Logicalcrow\ReCaptcha\ReCaptchaServiceProvider"
 ```
 
 ## Set the environment
@@ -116,13 +116,13 @@ return [
     'curl_timeout'                  => 10,
     'skip_ip'                       => env('RECAPTCHA_SKIP_IP', []), // array of IP addresses - String: dotted quad format e.g.: "127.0.0.1", IP/CIDR netmask eg. 127.0.0.0/24, also 127.0.0.1 is accepted and /32 assumed
     // @since v3.2.0 changed in v4.0.0
-    'default_validation_route'      => 'biscolab-recaptcha/validate',
+    'default_validation_route'      => 'logicalcrow-recaptcha/validate',
     // @since v3.2.0 changed in v4.0.0
     'default_token_parameter_name' => 'token',
     // @since v3.6.0 changed in v4.0.0
     'default_language'             => null,
     // @since v4.0.0
-    'default_form_id'              => 'biscolab-recaptcha-invisible-form', // Only for "invisible" reCAPTCHA
+    'default_form_id'              => 'logicalcrow-recaptcha-invisible-form', // Only for "invisible" reCAPTCHA
     // @since v4.0.0
     'explicit'                     => false, // true|false
     // @since v4.3.0
@@ -136,9 +136,9 @@ return [
         'theme'                    => 'light', // "light"|"dark"
         'size'                     => 'normal', // "normal"|"compact"
         'tabindex'                 => 0,
-        'callback'                 => null, // DO NOT SET "biscolabOnloadCallback"
-        'expired-callback'         => null, // DO NOT SET "biscolabOnloadCallback"
-        'error-callback'           => null, // DO NOT SET "biscolabOnloadCallback"
+        'callback'                 => null, // DO NOT SET "logicalcrowOnloadCallback"
+        'expired-callback'         => null, // DO NOT SET "logicalcrowOnloadCallback"
+        'error-callback'           => null, // DO NOT SET "logicalcrowOnloadCallback"
     ]
 ];
 ```
@@ -149,10 +149,10 @@ return [
 | `version`                           | `string`                | indicates the reCAPTCHA version (supported: v3&#124;v2&#124;invisible). Get more info about reCAPTCHA version at <a href="https://developers.google.com/recaptcha/docs/versions" target="_blank">https://developers.google.com/recaptcha/docs/versions</a>       | `'v2'`                                |
 | `curl_timeout`                      | `int`                   | the maximum number of seconds to allow cURL functions to execute                                                                                                                                                                                                 | `10`                                  |
 | `skip_ip`                           | `array` &#124; `string` | a whitelist of IP addresses (array or CSV) that, if recognized, disable the reCAPTCHA validation (return always true) and if you embed JS code in blade (view) file **NO validation call will be performed**                                                     | `[]`                                  |
-| `default_validation_route`          | `string`                | the route called via javascript built-in validation script (v3 only)                                                                                                                                                                                             | `'biscolab-recaptcha/validate'`       |
+| `default_validation_route`          | `string`                | the route called via javascript built-in validation script (v3 only)                                                                                                                                                                                             | `'logicalcrow-recaptcha/validate'`       |
 | `default_token_parameter_name`      | `string`                | the name of "token" GET parameter sent to `default_validation_route` to be validated (v3 only)                                                                                                                                                                   | `'token'`                             |
 | `default_language`                  | `string`                | the default language code. It has no effect with v3. See [https://developers.google.com/recaptcha/docs/language](https://developers.google.com/recaptcha/docs/language) for further information                                                                  | `null`                                |
-| `default_form_id`                   | `string`                | the default form ID. Only for "invisible" reCAPTCHA                                                                                                                                                                                                              | `'biscolab-recaptcha-invisible-form'` |
+| `default_form_id`                   | `string`                | the default form ID. Only for "invisible" reCAPTCHA                                                                                                                                                                                                              | `'logicalcrow-recaptcha-invisible-form'` |
 | `explicit`                          | `bool`                  | deferring the render can be achieved by specifying your onload callback function and adding parameters to the JavaScript resource. It has no effect with v3 and invisible (supported values: true&#124;false)                                                    | `false`                               |
 | `api_domain`                        | `string`                | customize API domain. Default value is `'www.google.com'`, but, if not accessible you ca set that value to `'www.recaptcha.net'`. More info about [Can I use reCAPTCHA globally?](https://developers.google.com/recaptcha/docs/faq#can-i-use-recaptcha-globally) | `'www.google.com'`                    |
 | `empty_message`                     | `bool`                  | set default error message to `null`                                                                                                                                                                                                                              | `false`                               |
@@ -169,7 +169,7 @@ return [
 | `tag_attributes.expired-callback` | `string` | the name of your callback function, executed when the reCAPTCHA response expires and the user needs to re-verify                                                                                                                                                     | `null`     |
 | `tag_attributes.error-callback`   | `string` | the name of your callback function, executed when reCAPTCHA encounters an error (usually network connectivity) and cannot continue until connectivity is restored. If you specify a function here, you are responsible for informing the user that they should retry | `null`     |
 
-> DO NOT SET `tag_attributes.callback`, `tag_attributes.expired-callback`, `tag_attributes.error-callback` to `biscolabOnloadCallback`. `biscolabOnloadCallback` is the default JavaScript callback function called when **explicit** is set to `true` and widget `onload` event is fired.
+> DO NOT SET `tag_attributes.callback`, `tag_attributes.expired-callback`, `tag_attributes.error-callback` to `logicalcrowOnloadCallback`. `logicalcrowOnloadCallback` is the default JavaScript callback function called when **explicit** is set to `true` and widget `onload` event is fired.
 
 Here you can find further details about `tag_attributes.*` [https://developers.google.com/recaptcha/docs/display#render_param](https://developers.google.com/recaptcha/docs/display#render_param)
 
@@ -183,7 +183,7 @@ $ php artisan config:cache
 
 ## Have you updated?
 
-If you are migrating from an older version check your `config/recaptcha.php` configuration file and compare it with <a href="https://github.com/biscolab/laravel-recaptcha/blob/master/config/recaptcha.php" target="_blank">https://github.com/biscolab/laravel-recaptcha/blob/master/config/recaptcha.php</a>.
+If you are migrating from an older version check your `config/recaptcha.php` configuration file and compare it with <a href="https://github.com/logicalcrow/laravel-recaptcha/blob/master/config/recaptcha.php" target="_blank">https://github.com/logicalcrow/laravel-recaptcha/blob/master/config/recaptcha.php</a>.
 
 > Make sure `config/recaptcha.php` is updated
 
@@ -402,7 +402,7 @@ Please, go to <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_AP
 
 ### Validation Laravel route
 
-Default validation route is `config('recaptcha.default_validation_route', 'biscolab-recaptcha/validate')`.  
+Default validation route is `config('recaptcha.default_validation_route', 'logicalcrow-recaptcha/validate')`.  
 Route and relative Controller are built-in in the package. The route if filtered and protected by Laravel `web` Middleware, that's why is important you embed `csrf-token` HTML meta tag and send `X-Requested-Wit` and `X-CSRF-TOKEN` headers.
 
 You can also change the validation end-point changing `default_validation_route` value in `recaptcha.php` config file.
